@@ -1,0 +1,41 @@
+@model AspMvcLibraryWebApp.Models.Author
+
+<h4>@Model.FullName Details</h4>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit"
+       asp-route-id="@Model.Id"
+       class="btn btn-sm btn-primary">
+       Edit
+    </a>
+    <a asp-action="Index"
+       class="btn btn-sm btn-success">
+        To Authors Home
+    </a>
+</div>

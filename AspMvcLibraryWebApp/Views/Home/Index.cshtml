@@ -1,0 +1,75 @@
+@using AspMvcLibraryWebApp.Models
+@using AspMvcLibraryWebApp.ViewModels
+
+@model IndexViewModel
+
+<div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-current="@Model.SortViewModel.CurrentState"
+                       asp-route-property="@Model.SortViewModel.TitleState">
+                        Title
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-current="@Model.SortViewModel.CurrentState"
+                       asp-route-property="@Model.SortViewModel.AuthorState">
+                        Author
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-current="@Model.SortViewModel.CurrentState"
+                       asp-route-property="@Model.SortViewModel.GenreState">
+                        Genre
+                    </a>
+                </th>
+                <th>Publisher</th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-current="@Model.SortViewModel.CurrentState"
+                       asp-route-property="@Model.SortViewModel.YearState">
+                        Year
+                    </a>
+                </th>
+                <th>Pages</th>
+                <th>Added At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var b in Model.Books)
+            {
+                <tr>
+                    <td>@b.Title</td>
+                    <td>
+                        @b.Author?.FullName
+                    </td>
+                    <td>
+                        @b.Genre?.Title
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(b.Publisher?.Logo))
+                        {
+                            <img src="~/images/@b.Publisher.Logo" height="50" />
+                        }
+                        @b.Publisher?.Title
+                    </td>
+                    <td>
+                        @b.Year
+                    </td>
+                    <td>
+                        @b.Pages
+                    </td>
+                    <td>
+                        @b.AddedAt.ToShortDateString()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
